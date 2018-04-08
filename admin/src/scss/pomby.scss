@@ -1,0 +1,29 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  background-color: #f9fafb;
+  font-family: 'Roboto', sans-serif;
+}
+
+#root{
+  height: 100%;
+  width: 100%;
+}
+
+#flex-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+
+    background-color: white;
+    border-right: 1px solid #CCC;
+}
+
+#sidebar.inactive {
+    margin-left: -250px;
+}
