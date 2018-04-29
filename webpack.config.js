@@ -11,7 +11,7 @@ const env = process.env.NODE_ENV || 'development';
 // Config:
 module.exports = {
   mode: env,
-  entry: './admin/src/index.jsx',
+  entry: path.resolve(__dirname, 'admin/src/index.jsx'),
   output: {
     filename: 'bundle-[hash:6].js',
     path: path.resolve(__dirname, 'admin/dist'),
@@ -53,7 +53,13 @@ module.exports = {
     },
   },
   plugins: [
-    new CleanWebpackPlugin(['admin/dist']),
-    new HtmlWebpackPlugin({title: 'Pomby', template: 'admin/src/index.html'}),
+    new CleanWebpackPlugin([path.resolve(__dirname, 'admin/dist')]),
+    new HtmlWebpackPlugin({title: 'Pomby', template: path.resolve(__dirname, 'admin/src/index.html')}),
   ],
+  resolveLoader: {
+    modules: [
+      path.resolve(__dirname, 'node_modules'),
+      path.resolve('./node_modules'),
+    ],
+  },
 };
