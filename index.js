@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+const logger = require('./lib/logger');
 const webpackConf = require('./webpack.config.js');
 
 app.get('/pomby/api', (req, res) => res.send('Hello API!'));
@@ -26,7 +27,7 @@ const Pomby = {
           return reject(err);
         }
 
-        console.log(stats.toString({colors: true}));
+        logger.info(stats.toString({colors: true}));
         resolve();
       });
 
