@@ -1,0 +1,8 @@
+type Query {
+  assets: [Asset!]!
+}
+
+type Asset {
+  id: ID!
+  title: String!
+}

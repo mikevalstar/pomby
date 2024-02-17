@@ -1,0 +1,22 @@
+{
+  "search.exclude": {
+    "**/pnpm-lock.yaml": true,
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/log": true,
+    "**/logs": true,
+    "**/tmp": true,
+    "**/__generated": true,
+    "**/__generated__": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact", "graphql"],
+  "stylelint.validate": ["css", "less", "postcss", "scss"],
+  "cSpell.words": ["embla", "uikit", "Upsert"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}

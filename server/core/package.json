@@ -1,0 +1,37 @@
+{
+  "name": "pomby-core",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "ts-node ./src/index.ts",
+    "watch": "nodemon",
+    "generate": "graphql-codegen --config codegen.yml",
+    "ts:check": "tsc --project ./tsconfig.json --noEmit --incremental"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.10.0",
+    "@as-integrations/fastify": "^2.1.1",
+    "@graphql-tools/graphql-file-loader": "^8.0.0",
+    "@graphql-tools/load": "^8.0.1",
+    "@graphql-tools/schema": "^10.0.2",
+    "fastify": "^4.26.1",
+    "graphql": "^16.8.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/typescript": "^4.0.4",
+    "@graphql-codegen/typescript-resolvers": "^4.0.4",
+    "@swc/core": "^1.4.1",
+    "@swc/helpers": "^0.5.6",
+    "@swc/register": "^0.1.10",
+    "@types/node": "^20.11.19",
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "watch": ["src"],
+  "ext": "ts,js,graphql",
+  "exec": "ts-node -T ./src/index.ts",
+  "events": {
+    "restart": "osascript -e 'display notification \"Graph Server restarted:\n'$FILENAME'\" with title \"nodemon\"'"
+  },
+  "delay": 1000,
+  "ignore": ["src/**/*.spec.ts", "src/**/*.test.ts"]
+}

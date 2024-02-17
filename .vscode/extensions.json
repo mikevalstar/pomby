@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "aaron-bond.better-comments",
+    "EditorConfig.EditorConfig",
+    "bierner.markdown-mermaid",
+    "redhat.vscode-yaml",
+    "vsls-contrib.codetour",
+    "graphql.vscode-graphql-syntax",
+    "esbenp.prettier-vscode"
+  ]
+}
