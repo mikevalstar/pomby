@@ -1,0 +1,56 @@
+layout {
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+
+  pane_template name="uiapp" {
+    pane split_direction="vertical" {
+      pane
+      pane split_direction="horizontal" {
+        pane size="33%" command="pnpm" {
+          start_suspended true
+          args "dev"
+        }
+        pane size="33%" command="pnpm" {
+          start_suspended true
+          args "build"
+        }
+        pane size="33%" command="pnpm" {
+          start_suspended true
+          args "generate"
+        }
+      }
+    }
+  }
+
+  tab name="Admin" cwd="./ui/admin" {
+    uiapp
+  }
+
+  tab name="Core" {
+    pane split_direction="vertical" {
+      pane {
+        cwd "./server/core"
+      }
+      pane split_direction="horizontal" {
+        pane size="60%" command="pnpm" {
+          start_suspended true
+          cwd "./server/core"
+          args "watch"
+        }
+        pane size="40%" command="pnpm" {
+          start_suspended true
+          cwd "./server/core"
+          args "generate"
+        }
+      }
+    }
+  }
+
+}
