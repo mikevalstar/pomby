@@ -15,7 +15,7 @@ export function ModeSwitch() {
   return (
     <div className='flex items-center space-x-2'>
       <Switch id='dark-mode' onCheckedChange={onChange} checked={darkMode} />
-      <Label htmlFor='dark-mode'>{darkMode ? <Sun /> : <Moon />}</Label>
+      <Label htmlFor='dark-mode'>{darkMode ? <Moon /> : <Sun />}</Label>
     </div>
   );
 }

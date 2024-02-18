@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>Pomby</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
       !(function () {
+        // Sets the dark mode based on the system preference
         var e = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,
-          t = localStorage.getItem('darkMode') || '"system"';
-        ('true' === t || (e && 'false' !== t)) && document.documentElement.classList.toggle('dark', !0);
+          t = localStorage.getItem('darkMode') || 'system';
+        ('true' === t || (e && 'system' === t)) && document.documentElement.classList.toggle('dark', !0);
       })();
     </script>
   </body>
