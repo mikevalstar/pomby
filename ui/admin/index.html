@@ -9,5 +9,12 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      !(function () {
+        var e = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,
+          t = localStorage.getItem('darkMode') || '"system"';
+        ('true' === t || (e && 'false' !== t)) && document.documentElement.classList.toggle('dark', !0);
+      })();
+    </script>
   </body>
 </html>
