@@ -1,4 +1,3 @@
-import MainLeftNav from '@/components/mainLeftNav';
 import ModeSwitch from '@/components/modeSwitch';
 import Search from '@/components/search';
 import TopNav from '@/components/topNav';
@@ -20,15 +19,12 @@ export const Route = createRootRoute({
             </div>
           </div>
         </div>
-        <div className='col-span-2'>
-          <MainLeftNav />
-        </div>
-        <div className='col-span-8'>
+        <div className='col-span-10'>
           <div className='py-2'>
             <Outlet />
-            <TanStackRouterDevtools />
           </div>
         </div>
+        <TanStackRouterDevtools />
       </div>
     );
   },
