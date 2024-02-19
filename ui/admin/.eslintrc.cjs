@@ -1,18 +1,28 @@
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended'],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
   },
-}
+  overrides: [
+    {
+      files: ['*.graphql'],
+      parser: '@graphql-eslint/eslint-plugin',
+      plugins: ['@graphql-eslint'],
+      rules: {
+        '@graphql-eslint/alphabetize': [
+          'error',
+          { fields: ['ObjectTypeDefinition'], values: ['EnumTypeDefinition'], selections: ['OperationDefinition'] },
+        ],
+        '@graphql-eslint/match-document-filename': ['error', { query: 'PascalCase', fileExtension: '.graphql' }],
+      },
+      parserOptions: {
+        project: ['./tsconfig.json'],
+      },
+    },
+  ],
+};

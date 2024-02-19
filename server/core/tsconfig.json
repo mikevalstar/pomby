@@ -1,6 +1,7 @@
 {
   "ts-node": {
-    "swc": true
+    "swc": true,
+    "require": ["tsconfig-paths/register"]
   },
   "compilerOptions": {
     "lib": ["es2021"],
@@ -28,7 +29,8 @@
     "resolveJsonModule": true,
     "paths": {
       "@graph": ["./src/__generated__/graph.ts"],
-      "@env": ["./src/.env.ts"]
+      "@env": ["./src/lib/env.ts"],
+      "@lib/*": ["./src/lib/*"]
     }
   },
   "include": ["**/*.ts", "**/*.js", ".*.ts"],

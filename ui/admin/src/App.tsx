@@ -1,5 +1,7 @@
+import { ApolloProvider } from '@apollo/client';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
 
+import apollo from './lib/apollo';
 // Import the generated route tree
 import { routeTree } from './routeTree.gen';
 import './styles/globals.css';
@@ -15,7 +17,11 @@ declare module '@tanstack/react-router' {
 const router = createRouter({ routeTree });
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ApolloProvider client={apollo}>
+      <RouterProvider router={router} />
+    </ApolloProvider>
+  );
 }
 
 export default App;

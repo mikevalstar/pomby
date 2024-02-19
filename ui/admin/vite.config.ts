@@ -9,6 +9,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@graph': path.resolve(__dirname, './src/__generated__/graph.ts'),
     },
   },
   server: {
@@ -18,6 +19,7 @@ export default defineConfig({
     proxy: {
       '/graphql': 'http://localhost:3000',
       '/api': 'http://localhost:3000',
+      '/file': 'http://localhost:3000',
     },
   },
 });

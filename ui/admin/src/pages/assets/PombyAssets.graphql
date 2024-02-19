@@ -1,0 +1,8 @@
+query PombyAssets {
+  assets {
+    id
+    originalFilename
+    title
+    url
+  }
+}

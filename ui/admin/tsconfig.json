@@ -22,7 +22,8 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@graph": ["./src/__generated__/graph.ts"]
     }
   },
   "include": ["src"],

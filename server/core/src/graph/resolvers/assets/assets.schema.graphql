@@ -5,4 +5,7 @@ type Query {
 type Asset {
   id: ID!
   title: String!
+  originalFilename: String!
+  mimetype: String
+  url: String!
 }
