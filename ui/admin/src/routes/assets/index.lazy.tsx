@@ -1,4 +1,4 @@
-import MainLeftNav from '@/components/mainLeftNav';
+import AssetFilters from '@/components/assetFilters';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Link, createLazyFileRoute } from '@tanstack/react-router';
@@ -12,7 +12,7 @@ function Assets() {
   return (
     <div className='grid grid-cols-10 gap-4'>
       <div className='col-span-2'>
-        <MainLeftNav />
+        <AssetFilters />
       </div>
       <div className='col-span-8'>
         <div className='py-2 flex px-4'>

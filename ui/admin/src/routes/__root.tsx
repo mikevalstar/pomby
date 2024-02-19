@@ -1,6 +1,7 @@
 import ModeSwitch from '@/components/modeSwitch';
 import Search from '@/components/search';
 import TopNav from '@/components/topNav';
+import { Toaster } from '@/components/ui/sonner';
 import UserNav from '@/components/userTopNav';
 import { Outlet, createRootRoute } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
@@ -25,6 +26,7 @@ export const Route = createRootRoute({
           </div>
         </div>
         <TanStackRouterDevtools />
+        <Toaster />
       </div>
     );
   },
