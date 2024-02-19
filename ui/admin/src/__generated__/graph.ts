@@ -28,8 +28,14 @@ export type Asset = {
 
 export type Query = {
   __typename?: 'Query';
+  asset?: Maybe<Asset>;
   assets: Array<Asset>;
   me: User;
+};
+
+
+export type QueryAssetArgs = {
+  id: Scalars['ID']['input'];
 };
 
 export type User = {
@@ -39,12 +45,63 @@ export type User = {
   name: Scalars['String']['output'];
 };
 
+export type PombyAssetQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type PombyAssetQuery = { __typename?: 'Query', asset?: { __typename?: 'Asset', id: string, mimetype?: string | null, originalFilename: string, title: string, url: string } | null };
+
 export type PombyAssetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type PombyAssetsQuery = { __typename?: 'Query', assets: Array<{ __typename?: 'Asset', id: string, originalFilename: string, title: string, url: string }> };
 
 
+export const PombyAssetDocument = gql`
+    query PombyAsset($id: ID!) {
+  asset(id: $id) {
+    id
+    mimetype
+    originalFilename
+    title
+    url
+  }
+}
+    `;
+
+/**
+ * __usePombyAssetQuery__
+ *
+ * To run a query within a React component, call `usePombyAssetQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePombyAssetQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePombyAssetQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function usePombyAssetQuery(baseOptions: Apollo.QueryHookOptions<PombyAssetQuery, PombyAssetQueryVariables> & ({ variables: PombyAssetQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PombyAssetQuery, PombyAssetQueryVariables>(PombyAssetDocument, options);
+      }
+export function usePombyAssetLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PombyAssetQuery, PombyAssetQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PombyAssetQuery, PombyAssetQueryVariables>(PombyAssetDocument, options);
+        }
+export function usePombyAssetSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<PombyAssetQuery, PombyAssetQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<PombyAssetQuery, PombyAssetQueryVariables>(PombyAssetDocument, options);
+        }
+export type PombyAssetQueryHookResult = ReturnType<typeof usePombyAssetQuery>;
+export type PombyAssetLazyQueryHookResult = ReturnType<typeof usePombyAssetLazyQuery>;
+export type PombyAssetSuspenseQueryHookResult = ReturnType<typeof usePombyAssetSuspenseQuery>;
+export type PombyAssetQueryResult = Apollo.QueryResult<PombyAssetQuery, PombyAssetQueryVariables>;
 export const PombyAssetsDocument = gql`
     query PombyAssets {
   assets {

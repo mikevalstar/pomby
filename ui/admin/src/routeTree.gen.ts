@@ -20,6 +20,9 @@ const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
 const AssetsIndexLazyImport = createFileRoute('/assets/')()
 const AssetsNewLazyImport = createFileRoute('/assets/new')()
+const AssetsAssetIDAssetNameLazyImport = createFileRoute(
+  '/assets/$assetID/$assetName',
+)()
 
 // Create/Update Routes
 
@@ -43,6 +46,15 @@ const AssetsNewLazyRoute = AssetsNewLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/assets/new.lazy').then((d) => d.Route))
 
+const AssetsAssetIDAssetNameLazyRoute = AssetsAssetIDAssetNameLazyImport.update(
+  {
+    path: '/assets/$assetID/$assetName',
+    getParentRoute: () => rootRoute,
+  } as any,
+).lazy(() =>
+  import('./routes/assets/$assetID.$assetName.lazy').then((d) => d.Route),
+)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -63,6 +75,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AssetsIndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/assets/$assetID/$assetName': {
+      preLoaderRoute: typeof AssetsAssetIDAssetNameLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -73,6 +89,7 @@ export const routeTree = rootRoute.addChildren([
   AboutLazyRoute,
   AssetsNewLazyRoute,
   AssetsIndexLazyRoute,
+  AssetsAssetIDAssetNameLazyRoute,
 ])
 
 /* prettier-ignore-end */

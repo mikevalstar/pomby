@@ -18,6 +18,25 @@ const resolvers: Resolvers = {
         url: `/file/${asset.id}/${asset.originalFilename}`,
       }));
     },
+    asset: async (_: any, { id }: { id: string }, context: UserContext) => {
+      const asset = await prisma.asset.findUnique({
+        where: {
+          id,
+        },
+      });
+
+      if (!asset) {
+        return null;
+      }
+
+      return {
+        id: asset.id,
+        title: asset.title || asset.originalFilename,
+        originalFilename: asset.originalFilename,
+        mimetype: asset.mimeType,
+        url: `/file/${asset.id}/${asset.originalFilename}`,
+      };
+    },
   },
 };
 

@@ -1,0 +1,9 @@
+query PombyAsset($id: ID!) {
+  asset(id: $id) {
+    id
+    mimetype
+    originalFilename
+    title
+    url
+  }
+}

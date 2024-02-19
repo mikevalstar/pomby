@@ -5,6 +5,9 @@ import { usePombyAssetsQuery } from '@graph';
 import { Link } from '@tanstack/react-router';
 import { Plus } from 'lucide-react';
 
+import { columns } from './components/AssetColumns';
+import { DataTable } from './components/AssetTable';
+
 function AssetsPage() {
   const { data } = usePombyAssetsQuery();
 
@@ -23,15 +26,7 @@ function AssetsPage() {
           </div>
         </div>
         <div className='px-4'>
-          <ul>
-            {data?.assets.map((asset) => (
-              <li key={asset.id}>
-                <a href={asset.url} target='_blank' rel='noreferrer'>
-                  {asset.title}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <DataTable columns={columns} data={data?.assets || []} />
         </div>
       </div>
     </div>

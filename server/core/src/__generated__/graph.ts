@@ -7,6 +7,7 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: 
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type RequireFields<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string; }
@@ -27,8 +28,14 @@ export type Asset = {
 
 export type Query = {
   __typename?: 'Query';
+  asset?: Maybe<Asset>;
   assets: Array<Asset>;
   me: User;
+};
+
+
+export type QueryAssetArgs = {
+  id: Scalars['ID']['input'];
 };
 
 export type User = {
@@ -138,6 +145,7 @@ export type AssetResolvers<ContextType = UserContext, ParentType extends Resolve
 }>;
 
 export type QueryResolvers<ContextType = UserContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
+  asset?: Resolver<Maybe<ResolversTypes['Asset']>, ParentType, ContextType, RequireFields<QueryAssetArgs, 'id'>>;
   assets?: Resolver<Array<ResolversTypes['Asset']>, ParentType, ContextType>;
   me?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
 }>;

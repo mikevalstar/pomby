@@ -1,5 +1,6 @@
 type Query {
   assets: [Asset!]!
+  asset(id: ID!): Asset
 }
 
 type Asset {
