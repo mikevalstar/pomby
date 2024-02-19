@@ -1,10 +1,19 @@
 import { ApolloServer, BaseContext } from '@apollo/server';
 import fastifyApollo, { fastifyApolloDrainPlugin } from '@as-integrations/fastify';
+import multipart from '@fastify/multipart';
+import 'dotenv/config';
 import Fastify from 'fastify';
 
+import apiUpload from './api/upload';
 import graphSchema from './graph/graph';
+import './lib/env';
 
-const fastify = Fastify();
+const fastify = Fastify({
+  logger: true,
+});
+
+fastify.register(multipart);
+fastify.register(apiUpload);
 
 const apollo = new ApolloServer<BaseContext>({
   schema: graphSchema.schema,
