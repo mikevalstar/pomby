@@ -2,6 +2,7 @@ import { Resolvers } from '@graph';
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 import { loadSchemaSync } from '@graphql-tools/load';
 import { addResolversToSchema } from '@graphql-tools/schema';
+import { DateTimeResolver } from 'graphql-scalars';
 
 // Resolvers
 import assetResolvers from './resolvers/assets/assets';
@@ -11,6 +12,7 @@ const typeDefs = loadSchemaSync(['./main.schema.graphql', './**/*.schema.graphql
 });
 
 export const resolvers: Resolvers = {
+  DateTime: DateTimeResolver,
   Query: {
     me: (_: any, __: any, context: UserContext) => {
       return {

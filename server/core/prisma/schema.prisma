@@ -17,6 +17,8 @@ model Asset {
   title             String?
   description       String?
   status            String?
+  publicUrl         String? @unique
+  public            Boolean @default(false)
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
   deletedAt         DateTime?

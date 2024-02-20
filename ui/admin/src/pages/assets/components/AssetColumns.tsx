@@ -2,6 +2,7 @@ import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Link } from '@tanstack/react-router';
 import { ColumnDef } from '@tanstack/react-table';
+import dayjs from 'dayjs';
 import { Pencil } from 'lucide-react';
 
 export type Asset = {
@@ -9,6 +10,7 @@ export type Asset = {
   title: string;
   url: string;
   originalFilename: string;
+  createdAt: string;
 };
 
 export const columns: ColumnDef<Asset>[] = [
@@ -26,6 +28,13 @@ export const columns: ColumnDef<Asset>[] = [
   {
     accessorKey: 'title',
     header: 'Title',
+  },
+  {
+    accessorKey: 'createdAt',
+    header: 'Created',
+    cell: ({ row }) => {
+      return dayjs(row.original.createdAt).format('MMM D, YYYY h:mm A');
+    },
   },
   {
     accessorKey: 'id',

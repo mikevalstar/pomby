@@ -1,8 +1,10 @@
 query PombyAssets {
   assets {
+    createdAt
     id
     originalFilename
     title
+    updatedAt
     url
   }
 }

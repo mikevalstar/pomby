@@ -16,9 +16,14 @@ const resolvers: Resolvers = {
         originalFilename: asset.originalFilename,
         mimetype: asset.mimeType,
         url: `/file/${asset.id}/${asset.originalFilename}`,
+        publicUrl: asset.publicUrl,
+        public: asset.public,
+        status: asset.status || '',
+        createdAt: asset.createdAt,
+        updatedAt: asset.updatedAt,
       }));
     },
-    asset: async (_: any, { id }: { id: string }, context: UserContext) => {
+    asset: async (_: any, { id }, context: UserContext) => {
       const asset = await prisma.asset.findUnique({
         where: {
           id,
@@ -35,6 +40,11 @@ const resolvers: Resolvers = {
         originalFilename: asset.originalFilename,
         mimetype: asset.mimeType,
         url: `/file/${asset.id}/${asset.originalFilename}`,
+        publicUrl: asset.publicUrl,
+        public: asset.public,
+        status: asset.status || '',
+        createdAt: asset.createdAt,
+        updatedAt: asset.updatedAt,
       };
     },
   },

@@ -1,0 +1,10 @@
+{
+  "watch": ["src"],
+  "ext": "ts,js,json,graphql",
+  "exec": "ts-node -T ./src/index.ts",
+  "events": {
+    "restart": "osascript -e 'display notification \"Public Server restarted:\n'$FILENAME'\" with title \"nodemon\"'"
+  },
+  "delay": 1000,
+  "ignore": ["src/**/*.spec.ts", "src/**/*.test.ts"]
+}

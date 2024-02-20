@@ -1,7 +1,8 @@
+import 'dotenv/config';
+
 import { ApolloServer, BaseContext } from '@apollo/server';
 import fastifyApollo, { fastifyApolloDrainPlugin } from '@as-integrations/fastify';
 import multipart from '@fastify/multipart';
-import 'dotenv/config';
 import Fastify from 'fastify';
 
 import fileRoutes from './api/file';

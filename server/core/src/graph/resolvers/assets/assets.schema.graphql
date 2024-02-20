@@ -1,12 +1,17 @@
 type Query {
-  assets: [Asset!]!
   asset(id: ID!): Asset
+  assets: [Asset!]!
 }
 
 type Asset {
+  createdAt: DateTime!
   id: ID!
-  title: String!
-  originalFilename: String!
   mimetype: String
+  originalFilename: String!
+  public: Boolean!
+  publicUrl: String
+  status: String!
+  title: String!
+  updatedAt: DateTime!
   url: String!
 }

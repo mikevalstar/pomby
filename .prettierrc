@@ -7,7 +7,7 @@
   "trailingComma": "all",
   "printWidth": 120,
   "bracketSameLine": true,
-  "importOrder": ["module-alias/register", "<THIRD_PARTY_MODULES>", "^[./]"],
+  "importOrder": ["dotenv/config", "module-alias/register", "<THIRD_PARTY_MODULES>", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "plugins": ["@trivago/prettier-plugin-sort-imports"]

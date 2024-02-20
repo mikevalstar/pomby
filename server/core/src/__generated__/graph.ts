@@ -1,4 +1,4 @@
-import { GraphQLResolveInfo } from 'graphql';
+import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
 import { UserContext } from '../types/index';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -15,14 +15,20 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  Date: { input: any; output: any; }
 };
 
 export type Asset = {
   __typename?: 'Asset';
+  createdAt: Scalars['Date']['output'];
   id: Scalars['ID']['output'];
   mimetype?: Maybe<Scalars['String']['output']>;
   originalFilename: Scalars['String']['output'];
+  public: Scalars['Boolean']['output'];
+  publicUrl?: Maybe<Scalars['String']['output']>;
+  status: Scalars['String']['output'];
   title: Scalars['String']['output'];
+  updatedAt: Scalars['Date']['output'];
   url: Scalars['String']['output'];
 };
 
@@ -119,6 +125,7 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = ResolversObject<{
   Asset: ResolverTypeWrapper<Asset>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  Date: ResolverTypeWrapper<Scalars['Date']['output']>;
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
@@ -129,6 +136,7 @@ export type ResolversTypes = ResolversObject<{
 export type ResolversParentTypes = ResolversObject<{
   Asset: Asset;
   Boolean: Scalars['Boolean']['output'];
+  Date: Scalars['Date']['output'];
   ID: Scalars['ID']['output'];
   Query: {};
   String: Scalars['String']['output'];
@@ -136,13 +144,22 @@ export type ResolversParentTypes = ResolversObject<{
 }>;
 
 export type AssetResolvers<ContextType = UserContext, ParentType extends ResolversParentTypes['Asset'] = ResolversParentTypes['Asset']> = ResolversObject<{
+  createdAt?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   mimetype?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   originalFilename?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  public?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  publicUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  status?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  updatedAt?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
   url?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
+
+export interface DateScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Date'], any> {
+  name: 'Date';
+}
 
 export type QueryResolvers<ContextType = UserContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   asset?: Resolver<Maybe<ResolversTypes['Asset']>, ParentType, ContextType, RequireFields<QueryAssetArgs, 'id'>>;
@@ -159,6 +176,7 @@ export type UserResolvers<ContextType = UserContext, ParentType extends Resolver
 
 export type Resolvers<ContextType = UserContext> = ResolversObject<{
   Asset?: AssetResolvers<ContextType>;
+  Date?: GraphQLScalarType;
   Query?: QueryResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
 }>;

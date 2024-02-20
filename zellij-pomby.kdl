@@ -53,4 +53,18 @@ layout {
     }
   }
 
+  tab name="Public" {
+    pane split_direction="vertical" {
+      pane {
+        cwd "./server/public"
+      }
+
+      pane command="pnpm" {
+        start_suspended true
+        cwd "./server/public"
+        args "watch"
+      }
+    }
+  }
+
 }

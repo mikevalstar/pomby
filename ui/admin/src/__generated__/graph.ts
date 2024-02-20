@@ -15,14 +15,20 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  Date: { input: any; output: any; }
 };
 
 export type Asset = {
   __typename?: 'Asset';
+  createdAt: Scalars['Date']['output'];
   id: Scalars['ID']['output'];
   mimetype?: Maybe<Scalars['String']['output']>;
   originalFilename: Scalars['String']['output'];
+  public: Scalars['Boolean']['output'];
+  publicUrl?: Maybe<Scalars['String']['output']>;
+  status: Scalars['String']['output'];
   title: Scalars['String']['output'];
+  updatedAt: Scalars['Date']['output'];
   url: Scalars['String']['output'];
 };
 
@@ -50,21 +56,25 @@ export type PombyAssetQueryVariables = Exact<{
 }>;
 
 
-export type PombyAssetQuery = { __typename?: 'Query', asset?: { __typename?: 'Asset', id: string, mimetype?: string | null, originalFilename: string, title: string, url: string } | null };
+export type PombyAssetQuery = { __typename?: 'Query', asset?: { __typename?: 'Asset', createdAt: any, id: string, mimetype?: string | null, originalFilename: string, public: boolean, publicUrl?: string | null, title: string, updatedAt: any, url: string } | null };
 
 export type PombyAssetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PombyAssetsQuery = { __typename?: 'Query', assets: Array<{ __typename?: 'Asset', id: string, originalFilename: string, title: string, url: string }> };
+export type PombyAssetsQuery = { __typename?: 'Query', assets: Array<{ __typename?: 'Asset', createdAt: any, id: string, originalFilename: string, title: string, updatedAt: any, url: string }> };
 
 
 export const PombyAssetDocument = gql`
     query PombyAsset($id: ID!) {
   asset(id: $id) {
+    createdAt
     id
     mimetype
     originalFilename
+    public
+    publicUrl
     title
+    updatedAt
     url
   }
 }
@@ -105,9 +115,11 @@ export type PombyAssetQueryResult = Apollo.QueryResult<PombyAssetQuery, PombyAss
 export const PombyAssetsDocument = gql`
     query PombyAssets {
   assets {
+    createdAt
     id
     originalFilename
     title
+    updatedAt
     url
   }
 }

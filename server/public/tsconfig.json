@@ -1,0 +1,37 @@
+{
+  "ts-node": {
+    "swc": true,
+    "require": ["tsconfig-paths/register"]
+  },
+  "compilerOptions": {
+    "lib": ["es2021"],
+    "outDir": "build/compiled",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "target": "es6",
+    "allowJs": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "declaration": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "stripInternal": true,
+    "skipLibCheck": true,
+    "pretty": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "downlevelIteration": true,
+    "baseUrl": "./",
+    "resolveJsonModule": true,
+    "paths": {
+      "@env": ["./src/lib/env.ts"],
+      "@lib/*": ["./src/lib/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.js", ".*.ts"],
+  "exclude": ["build", "node_modules", "src/__generated__", "**/node_modules/**", "../../node_modules"]
+}
